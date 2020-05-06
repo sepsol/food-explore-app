@@ -3,11 +3,11 @@ import { StyleSheet, View, Text } from 'react-native';
 
 
 function Details() {
-    return(
-        <View>
-            <Text>Details Screen</Text>
-        </View>
-    );
+	return(
+		<View>
+			<Text>Details Screen</Text>
+		</View>
+	);
 }
 
 
