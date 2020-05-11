@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#f0eeee',
 		borderRadius: 10,
 		flexDirection: 'row',
+		marginBottom: 15,
 	},
 	icon: {
 		fontSize: 30,
