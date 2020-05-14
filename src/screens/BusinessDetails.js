@@ -127,5 +127,9 @@ const styles = StyleSheet.create({
 
 export default Details;
 
+// <Component props={javascript}> ...children </Component>
+
 // <Image style={styles.image} source={{ uri: array[i] }}/>
 // React.createElement( Image, { style: styles.image, source:{ uri: array[i] } }, null )
+
+// React.createElement( component, props, ...children )
