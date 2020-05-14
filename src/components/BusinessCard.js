@@ -1,15 +1,19 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { withNavigation } from '@react-navigation/compat';
 
 
 
-function BusinessCard({ item }) {
+function BusinessCard({ item, navigation }) {
   return(
-    <View style={styles.container}>
+    <TouchableOpacity 
+      style={styles.container} 
+      onPress={() => navigation.navigate('BusinessDetails', { id: item.id })}
+    >
       <Image source={{uri: item.image_url}} style={styles.image}/>
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.subtitle}>{item.rating} Stars, {item.review_count} Reviews</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -24,15 +28,19 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   name: {
-    marginTop: 2,
+    marginTop: 3,
     fontWeight: 'bold',
     fontSize: 15,
+    paddingLeft: 2,
+    width: 181,
+    height: 20,
   },
   subtitle: {
     color: '#666',
+    paddingLeft: 2,
   },
 });
 
 
 
-export default BusinessCard;
+export default withNavigation(BusinessCard);

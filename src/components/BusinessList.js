@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
 
 import BusinessCard from '../components/BusinessCard';
 
@@ -7,8 +7,11 @@ import BusinessCard from '../components/BusinessCard';
 
 function BusinessList({ title, filteredBusinesses }) {
 
-  if(!filteredBusinesses.length) {return null;}
+  const flatlistRef = useRef();
+  // useEffect(() => flatlistRef.current.scrollToIndex({ index: 0, animated: false, viewOffset: 18}), []);
 
+  if(!filteredBusinesses.length) {return null;}
+  
   return(
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -18,7 +21,10 @@ function BusinessList({ title, filteredBusinesses }) {
         data={ filteredBusinesses }
         keyExtractor={ item => item.id }
         renderItem={ ({item}) => <BusinessCard item={item} /> }
+        contentContainerStyle={styles.flatlist}
+        ref={flatlistRef}
       />
+      {/* <Button title="go to start" onPress={() => flatlistRef.current.scrollToIndex({ index: 0, animated: false, viewOffset: 18})}/> */}
     </View>
   );
 }
@@ -26,13 +32,17 @@ function BusinessList({ title, filteredBusinesses }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 15,
     marginBottom: 15,
   },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: 4,
+    marginLeft: 20,
+  },
+  flatlist: {
+    paddingLeft: 18,
+    paddingRight: 10,
   },
 });
 

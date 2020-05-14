@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 
 import SearchBar from '../components/SearchBar';
 import useBusinesses from '../hooks/useBusinesses';
@@ -25,11 +25,13 @@ function Home() {
 				onSubmit={() => SearchApi(term)} // onSubmit={() => SearchApi()} === onSubmit={SearchApi}
 			/>
 
-			{errorMessage ? <Text>{errorMessage}</Text> : null}
+			<ScrollView>
+				<BusinessList title="Cost Effective" filteredBusinesses={FilterBusinesses('$')}/>
+				<BusinessList title="Bit Pricier" filteredBusinesses={FilterBusinesses('$$')}/>
+				<BusinessList title="Big Spender!" filteredBusinesses={FilterBusinesses('$$$')}/>
+			</ScrollView>
 
-			<BusinessList title="Cost Effective" filteredBusinesses={FilterBusinesses('$')}/>
-			<BusinessList title="Bit Pricier" filteredBusinesses={FilterBusinesses('$$')}/>
-			<BusinessList title="Big Spender!" filteredBusinesses={FilterBusinesses('$$$')}/>
+			{errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
 
 		</View>
 	);
@@ -40,7 +42,20 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#fff',
-	}
+	},
+	error: {
+		backgroundColor: '#ffeecc',
+		color: '#653',
+		borderColor: '#dca',
+		borderWidth: 0.5,
+		paddingVertical: 12,
+		paddingHorizontal: 15,
+		borderRadius: 7,
+		position: 'absolute',
+		bottom: 20,
+		alignSelf: 'center',
+		marginHorizontal: 40,
+	},
 });
 
 
