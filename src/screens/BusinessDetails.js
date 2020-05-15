@@ -8,9 +8,9 @@ import PriceDollarSigns from '../components/PriceDollarSigns';
 
 
 
-function Details({ route }) {
+function Details({ route }) { // for passing params through navigation object
 
-	const { id } = route.params;
+	const { id } = route.params; // for passing params through navigation object
 	const [GetBusinessDetails, businessDetails, errorMessage] = useBusinessId();
 	useEffect(() => {GetBusinessDetails(id)}, []);
 	
@@ -126,6 +126,9 @@ const styles = StyleSheet.create({
 
 
 export default Details;
+
+
+// NOTE TO SELF:
 
 // <Component props={javascript}> ...children </Component>
 

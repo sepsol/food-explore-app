@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { withNavigation } from '@react-navigation/compat';
+import { withNavigation } from '@react-navigation/compat'; // for passing params through navigation object
 
 
 
@@ -8,7 +8,7 @@ function BusinessCard({ item, navigation }) {
   return(
     <TouchableOpacity 
       style={styles.container} 
-      onPress={() => navigation.navigate('BusinessDetails', { id: item.id })}
+      onPress={() => navigation.navigate('BusinessDetails', { id: item.id })} // for passing params through navigation object
     >
       <Image source={{uri: item.image_url}} style={styles.image}/>
       <Text style={styles.name}>{item.name}</Text>
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
 
 
 
-export default withNavigation(BusinessCard);
+export default withNavigation(BusinessCard); // for passing params through navigation object
